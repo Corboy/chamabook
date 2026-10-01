@@ -1,0 +1,25 @@
+# Node dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# SQLite temporary WAL and lock files (keep chamabook.db for pre-seeded database)
+*.db-wal
+*.db-shm
+*.db-journal
+
+# Operating System files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor & IDE settings
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Backups
+*.bak
+backups/

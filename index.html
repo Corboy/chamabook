@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="sw">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#173c32">
+  <meta name="description" content="ChamaBook husaidia viongozi wa vikundi kufuatilia michango, mikopo, matumizi na mgao kwa uwazi.">
+  <title>ChamaBook — Fedha za kikundi, kwa uwazi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="booting">
+  <a class="skip-link" href="#mainContent">Ruka menyu, nenda kwenye maudhui</a>
+  <div class="welcome-loader" id="welcomeLoader" aria-busy="true">
+    <div class="welcome-layout">
+      <section class="welcome-copy">
+        <div class="welcome-brand"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="brand-name">chama<span>book</span></span></div>
+        <p class="welcome-kicker">FEDHA ZA KIKUNDI · KWA UWAZI</p>
+        <h1>Hesabu za kikundi,<br><span>wazi kwa kila hatua.</span></h1>
+        <p class="welcome-note" id="welcomeStatus" role="status" aria-live="polite" aria-atomic="true">Tunaandaa taarifa ulizohifadhi kwenye kifaa hiki…</p>
+        <div class="welcome-progress" role="progressbar" aria-label="Inafungua ChamaBook"><span></span></div>
+        <p class="welcome-local-note"><span aria-hidden="true">●</span><span>Taarifa zinahifadhiwa kwenye kivinjari hiki</span></p>
+      </section>
+      <section class="welcome-preview" aria-hidden="true">
+        <div class="preview-top"><span>MUHTASARI WA KIKUNDI</span><i></i></div>
+        <div class="preview-heading"><span></span><span></span></div>
+        <div class="preview-metrics"><div><span></span><i></i></div><div><span></span><i></i></div><div><span></span><i></i></div></div>
+        <div class="preview-ledger-head"><span>HISA</span><span>MIKOPO</span><span>MAREJESHO</span></div>
+        <div class="preview-ledger-row"><i></i><span></span><b></b></div>
+        <div class="preview-ledger-row"><i></i><span></span><b></b></div>
+        <div class="preview-ledger-row"><i></i><span></span><b></b></div>
+        <div class="preview-saving"><span class="saving-check">✓</span><span><strong>Rekodi zako</strong><small>Zinaandaliwa kufunguka</small></span><span class="saving-dots"><i></i><i></i><i></i></span></div>
+      </section>
+    </div>
+  </div>
+  <div class="app-shell" aria-busy="true">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand-lockup">
+        <div class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+        <div class="brand-name">chama<span>book</span></div>
+      </div>
+
+      <div class="group-switcher" id="groupSwitcher">
+        <span class="group-avatar">UM</span>
+        <span class="group-meta"><strong id="sidebarGroupName">Umoja Investment Group</strong><small id="sidebarGroupType">Savings &amp; investment</small></span>
+      </div>
+
+      <div class="nav-label">WORKSPACE</div>
+      <nav class="main-nav" aria-label="Main navigation">
+        <button class="nav-item active" data-view="dashboard" type="button" aria-current="page"><span class="nav-icon">⌂</span><span>Overview</span></button>
+        <button class="nav-item" data-view="meeting" type="button"><span class="nav-icon">⚡</span><span>Kikao cha Leo</span></button>
+        <button class="nav-item" data-view="members" type="button"><span class="nav-icon">♧</span><span>Members</span><span class="nav-count" id="memberCount">24</span></button>
+        <button class="nav-item" data-view="contributions" type="button"><span class="nav-icon">↗</span><span>Contributions</span></button>
+        <button class="nav-item" data-view="loans" type="button"><span class="nav-icon">⇄</span><span>Loans</span><span class="nav-dot"></span></button>
+        <button class="nav-item" data-view="welfare" type="button"><span class="nav-icon">🏥</span><span>Mfuko wa Jamii</span></button>
+        <button class="nav-item" data-view="fines" type="button"><span class="nav-icon">!</span><span>Fines</span></button>
+        <button class="nav-item" data-view="shareout" type="button"><span class="nav-icon">◷</span><span>Cycle &amp; share-out</span></button>
+        <button class="nav-item" data-view="ledger" type="button"><span class="nav-icon">▤</span><span>Transactions</span></button>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <div class="cycle-mini">
+          <div class="cycle-mini-top"><span>SHARE-OUT CYCLE</span><span id="sidebarProgressLabel">72%</span></div>
+          <div class="progress-track"><span id="sidebarProgress"></span></div>
+          <div class="cycle-mini-foot"><span id="sidebarCycleYear">Year 4 of 5</span><span id="sidebarCycleEnd">Sep 2027</span></div>
+        </div>
+        <button class="nav-item settings-link" id="settingsButton" type="button"><span class="nav-icon">⚙</span><span>Group settings</span></button>
+        <div class="profile-row">
+          <div class="profile-avatar">AM</div>
+          <div class="profile-meta"><strong>Asha M.</strong><small>Mweka Hazina (Treasurer)</small></div>
+        </div>
+      </div>
+    </aside>
+
+    <div class="mobile-scrim" id="mobileScrim"></div>
+    <main class="main-area">
+      <header class="topbar">
+        <button class="sidebar-toggle" id="sidebarToggle" type="button" aria-label="Hide menu" aria-expanded="true"><span></span><span></span><span></span></button>
+        <button class="mobile-menu" id="mobileMenu" type="button" aria-label="Open navigation"><span></span><span></span></button>
+        <div class="breadcrumb"><span id="breadcrumbGroup">Kikundi cha Uwekezaji Umoja</span><span class="crumb-divider">/</span><strong id="breadcrumbPage">Overview</strong></div>
+        <div class="topbar-actions">
+          <div class="search-wrap" role="search"><button class="mobile-search-button" id="mobileSearchButton" type="button" aria-label="Search members and loans">⌕</button><span class="search-symbol" aria-hidden="true">⌕</span><input id="globalSearch" type="search" placeholder="Search members, loans..." aria-label="Search members and loans"><kbd>⌘ K</kbd></div>
+          <button class="storage-status" id="dataSafetyButton" data-action="manage-data" type="button" aria-label="Hali ya kuhifadhi taarifa" title="Hali ya kuhifadhi taarifa"><span class="storage-dot" aria-hidden="true"></span><span id="dataStatusText">Inaanza…</span></button>
+          <select id="languageSelect" class="language-select" aria-label="Lugha" title="Chagua lugha"><option value="sw">Kiswahili</option><option value="en">English</option></select>
+          <button class="icon-button notification-button" id="notificationButton" type="button" aria-label="Show notifications"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/></svg><i></i></button>
+          <span class="top-avatar" role="img" aria-label="Mweka Hazina Asha M." title="Mweka Hazina">AM</span>
+        </div>
+      </header>
+
+      <div class="page-wrap" id="mainContent" tabindex="-1" aria-busy="true">
+        <section class="view active" id="view-dashboard" aria-labelledby="pageTitle">
+          <div class="page-intro">
+            <div><p class="eyebrow" id="todayLabel">THURSDAY, 25 SEPTEMBER 2026</p><h1 id="pageTitle">Good morning, Asha <span class="wave">✳</span></h1><p class="page-subtitle">Here’s the latest on your group’s money.</p></div>
+            <div class="intro-actions"><button class="button button-meeting" data-action="open-meeting" type="button"><span class="zap">⚡</span>Kikao cha Leo</button><button class="button button-quiet" data-action="export" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 17v4h14v-4"/></svg>Export transactions</button><button class="button button-primary" data-action="record-payment" type="button"><span class="plus">+</span>Record contribution</button></div>
+          </div>
+
+          <section class="cycle-banner" aria-label="Share-out cycle progress">
+            <div class="cycle-banner-copy">
+              <div class="banner-kicker"><span class="status-pip"></span> LONG-TERM GROUP CYCLE <span class="kicker-line"></span><span id="cycleYearsLabel">YEAR 4 OF 5</span></div>
+              <h2>Your contributions are building<br><em>toward a shared future.</em></h2>
+              <div class="banner-foot"><span>Cycle started <strong id="cycleStartLabel">01 Oct 2022</strong></span><span class="foot-separator">·</span><span>Share-out <strong id="cycleEndLabel">30 Sep 2027</strong></span></div>
+            </div>
+            <div class="cycle-ring-wrap">
+              <svg class="cycle-ring" viewBox="0 0 120 120" role="img" aria-label="Cycle progress">
+                <circle class="ring-track" cx="60" cy="60" r="49"></circle>
+                <circle class="ring-progress" id="ringProgress" cx="60" cy="60" r="49"></circle>
+              </svg>
+              <div class="ring-center"><strong id="cyclePercent">72%</strong><span>complete</span></div>
+            </div>
+            <div class="cycle-milestones" id="cycleMilestones"></div>
+          </section>
+
+          <div class="stats-grid">
+            <article class="stat-card stat-cash"><div class="stat-top"><span>Current cash balance</span><span class="stat-icon icon-cash">↗</span></div><strong class="stat-value" id="cashValue">TSh 18,450,000</strong><div class="stat-foot"><span class="trend-up">Cash in the group</span><span>loans shown separately</span></div><div class="stat-spark spark-cash" aria-hidden="true"><svg viewBox="0 0 150 36" preserveAspectRatio="none"><path d="M0 29 C12 28,15 23,28 26 S45 31,55 20 S77 21,83 17 S101 22,111 11 S128 17,137 8 S145 12,150 2"/></svg></div></article>
+            <article class="stat-card"><div class="stat-top"><span>Loan portfolio</span><span class="stat-icon icon-loan">↔</span></div><strong class="stat-value" id="loanValue">TSh 7,850,000</strong><div class="stat-foot"><span class="foot-warning" id="overdueLoanSummary">3 loans overdue</span><span>to recover</span></div><div class="stat-spark spark-loan" aria-hidden="true"><svg viewBox="0 0 150 36" preserveAspectRatio="none"><path d="M0 27 C10 25,20 20,29 23 S43 29,54 19 S65 17,76 21 S93 14,100 17 S118 7,130 11 S141 5,150 4"/></svg></div></article>
+            <article class="stat-card"><div class="stat-top"><span>Member capital</span><span class="stat-icon icon-capital">◉</span></div><strong class="stat-value" id="capitalValue">TSh 32,480,000</strong><div class="stat-foot"><span class="trend-up" id="capitalThisMonth">TSh 0</span><span>this month</span></div><div class="stat-spark spark-capital" aria-hidden="true"><svg viewBox="0 0 150 36" preserveAspectRatio="none"><path d="M0 31 C13 26,17 30,27 20 S43 25,53 16 S68 22,79 12 S97 17,105 10 S121 13,132 6 S144 8,150 1"/></svg></div></article>
+            <article class="stat-card"><div class="stat-top"><span>Interest earned</span><span class="stat-icon icon-interest">✳</span></div><strong class="stat-value" id="interestValue">TSh 4,285,000</strong><div class="stat-foot"><span class="trend-neutral" id="interestThisMonth">TSh 0</span><span>collected this month</span></div><div class="stat-spark spark-interest" aria-hidden="true"><svg viewBox="0 0 150 36" preserveAspectRatio="none"><path d="M0 31 C12 28,19 25,28 27 S40 17,53 21 S69 18,79 14 S91 18,103 11 S119 13,129 7 S141 4,150 2"/></svg></div></article>
+          </div>
+
+          <div class="content-grid dashboard-grid">
+            <section class="card performance-card">
+              <div class="card-heading"><div><p class="eyebrow">FUND PERFORMANCE</p><h3>Capital collected</h3></div><div class="select-shell"><select id="chartRange" aria-label="Chart date range"><option value="6">Last 6 months</option><option value="12">Last 12 months</option></select><span>⌄</span></div></div>
+              <div class="chart-legend"><span><i class="legend-dot legend-capital"></i>Member capital</span><span><i class="legend-dot legend-interest"></i>Interest collected</span><span class="chart-total" id="chartTotal">TSh 32.48m</span></div>
+              <div class="chart-wrap"><div class="chart-y-labels"><span>8m</span><span>6m</span><span>4m</span><span>2m</span><span>0</span></div><div class="chart-main"><div class="chart-gridlines"><i></i><i></i><i></i><i></i><i></i></div><svg id="performanceChart" viewBox="0 0 700 190" preserveAspectRatio="none" role="img" aria-label="Monthly contributions and interest collected"><defs><linearGradient id="capitalFill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#b6d49a" stop-opacity=".35"/><stop offset="1" stop-color="#b6d49a" stop-opacity="0"/></linearGradient></defs><path id="capitalArea" class="chart-area" d=""></path><path id="capitalLine" class="chart-line chart-line-capital" d=""></path><path id="interestLine" class="chart-line chart-line-interest" d=""></path><g id="chartPoints"></g></svg><div class="chart-x-labels" id="chartMonths"></div></div></div>
+            </section>
+
+            <section class="card due-card">
+              <div class="card-heading"><div><p class="eyebrow">NEEDS ATTENTION</p><h3>Payment follow-up</h3></div><button class="text-link" data-view-link="contributions" type="button">View all <span>→</span></button></div>
+              <div class="attention-summary"><div class="attention-icon">!</div><div><strong><span id="unpaidCount">4</span> members have a balance due</strong><span id="dueSummaryLabel">Contribution schedule · TSh 240,000 due</span></div></div>
+              <div class="due-list" id="dueList"></div>
+              <button class="button button-outline full-button" data-action="record-payment" type="button">Record a contribution <span>→</span></button>
+            </section>
+          </div>
+
+          <section class="card transactions-card">
+            <div class="card-heading"><div><p class="eyebrow">ACCOUNTABILITY</p><h3>Recent transactions</h3></div><button class="text-link" data-view-link="ledger" type="button">Full ledger <span>→</span></button></div>
+            <div class="table-scroll"><table><thead><tr><th>TRANSACTION</th><th>MEMBER</th><th>METHOD</th><th>RECORDED BY</th><th>DATE</th><th class="align-right">AMOUNT</th></tr></thead><tbody id="recentTransactions"></tbody></table></div>
+          </section>
+          <footer class="page-footer"><span>ChamaBook keeps your group records together.</span><span>Demo workspace · Data stays in this browser</span></footer>
+        </section>
+
+        <section class="view" id="view-members" aria-labelledby="membersTitle">
+          <div class="page-intro compact-intro"><div><p class="eyebrow">YOUR GROUP</p><h1 id="membersTitle">Members</h1><p class="page-subtitle">A clear view of each member’s capital, contributions and loans.</p></div><div class="intro-actions"><button class="button button-quiet" data-action="import-members" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3m0 0L8 7m4-4 4 4M5 17v4h14v-4"/></svg>Import members</button><button class="button button-primary" data-action="add-member" type="button"><span class="plus">+</span>Add member</button></div></div>
+          <div class="member-summary-grid"><div class="mini-metric"><span>Active members</span><strong id="membersTotal">24</strong><small>Across this group</small></div><div class="mini-metric"><span>Member capital</span><strong id="membersCapital">TSh 32,480,000</strong><small>Paid into the group</small></div><div class="mini-metric"><span>Members with loans</span><strong id="membersWithLoans">8</strong><small id="membersLoanFollowup">3 require follow-up</small></div></div>
+          <section class="card directory-card"><div class="directory-toolbar"><div class="table-search"><span>⌕</span><input id="memberSearch" type="search" placeholder="Search by name or member ID" aria-label="Search members"></div><div class="toolbar-right"><select id="memberStatusFilter" class="filter-select" aria-label="Filter members"><option value="all">All members</option><option value="Active">Active</option><option value="Paused">Paused</option></select><button class="icon-button export-members" data-action="export-members" type="button" aria-label="Export members"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 17v4h14v-4"/></svg></button></div></div><div class="table-scroll"><table><thead><tr><th>MEMBER</th><th>MEMBER ID</th><th>JOINED</th><th>CAPITAL PAID</th><th>LOAN BALANCE</th><th>STATUS</th><th></th></tr></thead><tbody id="membersTable"></tbody></table></div><div class="table-footer"><span id="memberFooterCount">Showing 8 of 24 members</span><div class="pagination"><button type="button" aria-label="Previous page">‹</button><button class="page-number active" type="button">1</button><button class="page-number" type="button">2</button><button class="page-number" type="button">3</button><button type="button" aria-label="Next page">›</button></div></div></section>
+          <footer class="page-footer"><span>Demo records only; this version has no user sign-in.</span><span>Changes save on this device.</span></footer>
+        </section>
+
+        <section class="view" id="view-contributions" aria-labelledby="contributionsTitle">
+          <div class="page-intro compact-intro"><div><p class="eyebrow">COLLECTIONS</p><h1 id="contributionsTitle">Contributions</h1><p class="page-subtitle">Track what members owe and what the group has actually received.</p></div><div class="intro-actions"><button class="button button-quiet" data-action="export" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 17v4h14v-4"/></svg>Export</button><button class="button button-primary" data-action="record-payment" type="button"><span class="plus">+</span>Record payment</button></div></div>
+          <div class="collection-highlight"><div class="collection-main"><span class="eyebrow">CONTRIBUTION PLAN</span><h2>Stay on top of member dues.</h2><p>Member capital is tracked separately from operating fees and other group funds.</p><div class="collection-progress"><div class="collection-track"><span id="collectionProgress"></span></div><div><strong id="collectedThisMonth">TSh 1,200,000</strong><span> of TSh 1,440,000 expected this period</span></div></div></div><div class="collection-side"><div><span>Collected</span><strong id="collectionPercent">83%</strong></div><div><span>Members due</span><strong id="collectionDue">4</strong></div></div></div>
+          <section class="card plan-card"><div class="card-heading"><div><p class="eyebrow">GROUP RULES</p><h3>Contribution plans</h3></div><button class="button button-small button-outline" data-action="add-plan" type="button"><span class="plus">+</span>Add plan</button></div><div class="plan-grid" id="planGrid"></div></section>
+          <section class="card contribution-status-card"><div class="card-heading"><div><p class="eyebrow">THIS PERIOD</p><h3>Member payment status</h3></div><div class="contribution-controls"><select id="contributionPlanSelect" class="filter-select" aria-label="Choose a contribution plan"></select><div class="filter-pills"><button class="pill active" data-contribution-filter="all" type="button">All</button><button class="pill" data-contribution-filter="Due" type="button">Due <span id="duePillCount">4</span></button><button class="pill" data-contribution-filter="Paid" type="button">Paid</button></div></div></div><div class="table-scroll"><table><thead><tr><th>MEMBER</th><th>PLAN</th><th>DUE DATE</th><th>PAID / EXPECTED</th><th>STATUS</th><th></th></tr></thead><tbody id="contributionStatusTable"></tbody></table></div></section>
+          <footer class="page-footer"><span>Plans are configurable for each group.</span><span>Member capital and operating fees stay separate.</span></footer>
+        </section>
+
+        <section class="view" id="view-loans" aria-labelledby="loansTitle">
+          <div class="page-intro compact-intro"><div><p class="eyebrow">CREDIT &amp; RECOVERY</p><h1 id="loansTitle">Loans</h1><p class="page-subtitle">Follow each loan from approval to its final repayment.</p></div><div class="intro-actions"><button class="button button-quiet" data-action="export-loans" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 17v4h14v-4"/></svg>Export</button><button class="button button-primary" data-action="new-loan" type="button"><span class="plus">+</span>New loan</button></div></div>
+          <div class="loan-metrics"><div class="loan-metric-card"><span>Principal outstanding</span><strong id="loanBookTotal">TSh 7,850,000</strong><small>Money currently lent out</small></div><div class="loan-metric-card"><span>Interest collected</span><strong id="loanInterestTotal">TSh 4,285,000</strong><small>Demo total; not filtered by cycle</small></div><div class="loan-metric-card loan-alert-card"><span>Past due</span><strong id="overdueTotal">TSh 740,000</strong><small><i></i><span id="overdueCount">3 loans</span> need follow-up</small></div><div class="loan-metric-card"><span>Loan balances with a due date this week</span><strong id="upcomingTotal">TSh 1,280,000</strong><small>Full balances, not installment amounts</small></div></div>
+          <section class="card loan-table-card"><div class="card-heading"><div><p class="eyebrow">ACTIVE LOANS</p><h3>Loan register</h3></div><div class="toolbar-right"><select id="loanFilter" class="filter-select" aria-label="Filter loans"><option value="all">All loans</option><option value="Overdue">Overdue</option><option value="Active">On track</option><option value="Paid">Paid</option></select></div></div><div class="table-scroll"><table><thead><tr><th>BORROWER</th><th>LOAN ID</th><th>PRINCIPAL</th><th>INTEREST</th><th>REPAID</th><th>REMAINING</th><th>STATUS</th><th></th></tr></thead><tbody id="loansTable"></tbody></table></div><div class="loan-note"><span class="note-mark">i</span><span>Loan principal is shown as money owed to the group; only collected interest counts as earned income.</span></div></section>
+          <footer class="page-footer"><span>Interest and approval rules depend on your group’s decisions.</span><span>This demo has no audit trail or correction flow.</span></footer>
+        </section>
+
+        <section class="view" id="view-fines" aria-labelledby="finesTitle">
+          <div class="page-intro compact-intro"><div><p class="eyebrow">MEMBER OBLIGATIONS</p><h1 id="finesTitle">Fines</h1><p class="page-subtitle">Record group-approved fines and track payments against each member.</p></div><div class="intro-actions"><button class="button button-primary" data-action="add-fine" type="button"><span class="plus">+</span>Record a fine</button></div></div>
+          <div class="loan-metrics"><div class="loan-metric-card"><span>Outstanding fines</span><strong id="finesOutstanding">TSh 0</strong><small>Unpaid fine balance</small></div><div class="loan-metric-card"><span>Fines assessed</span><strong id="finesAssessed">0</strong><small>Group records</small></div><div class="loan-metric-card"><span>Total fines received</span><strong id="finesCollected">TSh 0</strong><small>All recorded fine payments</small></div></div>
+          <section class="card loan-table-card"><div class="card-heading"><div><p class="eyebrow">FINE REGISTER</p><h3>Member fines</h3></div><div class="toolbar-right"><select id="fineFilter" class="filter-select" aria-label="Filter fines"><option value="all">All fines</option><option value="Unpaid">Unpaid</option><option value="Paid">Paid</option></select></div></div><div class="table-scroll"><table><thead><tr><th>MEMBER</th><th>REASON</th><th>DATE</th><th>ASSESSED</th><th>PAID</th><th>BALANCE</th><th>STATUS</th><th></th></tr></thead><tbody id="finesTable"></tbody></table></div><div class="loan-note"><span class="note-mark">i</span><span>A fine is a group record. Recording the fine itself does not change the cash balance; only a fine payment does.</span></div></section>
+          <footer class="page-footer"><span>Apply fines only under your group's approved rules.</span><span>Payments appear in the transaction ledger.</span></footer>
+        </section>
+
+        <section class="view" id="view-shareout" aria-labelledby="shareoutTitle">
+          <div class="page-intro compact-intro"><div><p class="eyebrow">CYCLE PLANNING</p><h1 id="shareoutTitle">Cycle &amp; share-out</h1><p class="page-subtitle">Prepare a fair closing statement under your group’s rules.</p></div><div class="intro-actions"><button class="button button-quiet" data-action="cycle-settings" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8v5l3 2m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>Cycle settings</button><button class="button button-primary" data-action="preview-shareout" type="button">Preview share-out <span>→</span></button></div></div>
+          <div class="shareout-top-grid"><section class="card cycle-detail-card"><div class="card-heading"><div><p class="eyebrow">CURRENT CYCLE</p><h3 id="shareoutCycleName">Umoja long-term cycle</h3></div><span class="status-badge badge-active"><i></i>In progress</span></div><div class="cycle-date-line"><div><span>Started</span><strong id="shareoutStart">01 Oct 2022</strong></div><div class="cycle-arrow">→</div><div><span>Share-out date</span><strong id="shareoutEnd">30 Sep 2027</strong></div></div><div class="long-progress"><div class="long-progress-head"><span id="shareoutYearLabel">Year 4 of 5</span><strong id="shareoutProgressLabel">72%</strong></div><div class="long-progress-track"><span id="shareoutProgress"></span></div></div><div class="milestone-row" id="shareoutMilestones"></div></section><section class="shareout-estimate-card"><p class="eyebrow">ESTIMATED GROUP VALUE AT CLOSE</p><strong id="projectedShareout">TSh 26,300,000</strong><p>Includes current cash and outstanding loan principal, assuming loans are recovered by the closing date.</p><div class="estimate-breakdown"><span>Cash available now <strong id="shareoutCash">TSh 18,450,000</strong></span><span>Loan principal to recover <strong id="shareoutReceivable">TSh 7,850,000</strong></span></div><div class="estimate-caption"><span class="estimate-dot"></span>Projection only · not yet approved for payout</div></section></div>
+          <div class="distribution-rule card"><div class="rule-icon">⌗</div><div class="rule-copy"><span class="eyebrow">DISTRIBUTION RULE</span><strong id="distributionRuleLabel">Pro rata by paid-up member capital</strong><small>The group’s approved rules decide what is included in a final share-out.</small></div><button class="text-link" data-action="cycle-settings" type="button">Edit rule <span>→</span></button></div>
+          <section class="card shareout-members-card"><div class="card-heading"><div><p class="eyebrow">MEMBER ENTITLEMENT</p><h3>Illustrative share-out by member</h3></div><div class="table-summary"><span class="summary-dot"></span>Based on paid-up capital</div></div><div class="table-scroll"><table><thead><tr><th>MEMBER</th><th>CAPITAL PAID</th><th>SHARE OF CAPITAL</th><th>ESTIMATED SHARE-OUT</th></tr></thead><tbody id="shareoutTable"></tbody></table></div><div class="shareout-footer-note"><span class="note-mark">i</span><span>Final amounts can only be confirmed after repayments, expenses, reserves and member capital records are reconciled.</span></div></section>
+          <footer class="page-footer"><span>Every cycle close should have a recorded group resolution.</span><span>Current projections update as records change.</span></footer>
+        </section>
+
+        <section class="view" id="view-ledger" aria-labelledby="ledgerTitle">
+          <div class="page-intro compact-intro"><div><p class="eyebrow">FULL HISTORY</p><h1 id="ledgerTitle">Transactions</h1><p class="page-subtitle">Demo entries show a sample recorder name; sign-in is not enabled.</p></div><div class="intro-actions"><button class="button button-quiet" data-action="export" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 17v4h14v-4"/></svg>Export CSV</button><button class="button button-primary" data-action="record-payment" type="button"><span class="plus">+</span>Record transaction</button></div></div>
+          <section class="card ledger-card"><div class="ledger-filters"><div class="table-search"><span>⌕</span><input id="ledgerSearch" type="search" placeholder="Search transactions" aria-label="Search transactions"></div><select id="transactionTypeFilter" class="filter-select" aria-label="Filter transaction type"><option value="all">All types</option><option value="Member capital">Member capital</option><option value="Operating fee">Operating fee</option><option value="Welfare fund">Welfare fund</option><option value="Loan disbursement">Loan disbursement</option><option value="Loan repayment">Loan repayment</option><option value="Fine payment">Fine payment</option><option value="Fine assessed">Fine assessed</option><option value="Expense">Expense</option></select><select id="paymentMethodFilter" class="filter-select" aria-label="Filter payment method"><option value="all">All methods</option><option value="Cash">Cash</option><option value="M-Pesa">M-Pesa</option><option value="Airtel Money">Airtel Money</option><option value="Mixx">Mixx</option><option value="Bank">Bank</option><option value="Other">Other</option></select><button class="button button-small button-outline" data-action="add-expense" type="button"><span class="plus">+</span>Record expense</button></div><div class="table-scroll"><table><thead><tr><th>TRANSACTION</th><th>MEMBER</th><th>REFERENCE</th><th>METHOD</th><th>RECORDED BY</th><th>DATE</th><th class="align-right">AMOUNT</th></tr></thead><tbody id="ledgerTable"></tbody></table></div><div class="table-footer"><span id="ledgerFooterCount">24 transactions</span><button class="text-link" data-action="export" type="button">Download full history <span>↓</span></button></div></section>
+          <footer class="page-footer"><span>This demo does not include transaction corrections.</span><span>All amounts shown in Tanzanian shillings.</span></footer>
+        </section>
+
+        <!-- MEETING MODE / KIKAO CHA LEO -->
+        <section class="view" id="view-meeting" aria-labelledby="meetingTitle">
+          <div class="meeting-header-banner">
+            <div class="meeting-title-area">
+              <div class="meeting-date-badge"><span class="zap">⚡</span> <span id="meetingDateDisplay">KIKAO CHA LEO</span></div>
+              <h2 id="meetingTitle">Kikao cha Leo &amp; Makusanyo ya Pamoja</h2>
+              <p>Weka mahudhurio na rekodi hisa, mfuko wa jamii na faini za wanachama wote kwa pamoja bila kupoteza muda.</p>
+            </div>
+            <div class="meeting-banner-actions">
+              <button class="button button-banner-action" data-action="new-loan" type="button"><span class="plus">+</span> Toa Mkopo Kikao Hiki</button>
+            </div>
+          </div>
+
+          <div class="meeting-quick-tools">
+            <span class="quick-tools-label">Zana za Haraka:</span>
+            <button class="quick-tool-btn" id="btnMarkAllPresent" type="button">✓ Weka Wote Wapo</button>
+            <button class="quick-tool-btn" id="btnApplyAllHisa" type="button">💰 Weka Hisa za Wote (<span id="quickHisaAmount">TSh 60,000</span>)</button>
+            <button class="quick-tool-btn" id="btnApplyAllWelfare" type="button">🏥 Weka Mfuko wa Jamii (<span id="quickWelfareAmount">TSh 5,000</span>)</button>
+            <button class="quick-tool-btn" id="btnClearAmounts" type="button">✕ Safisha Namba</button>
+          </div>
+
+          <section class="card">
+            <div class="card-heading">
+              <div>
+                <p class="eyebrow">ORODHA YA WANACHAMA KIKAO HIKI</p>
+                <h3>Mahudhurio na Michango ya Leo</h3>
+              </div>
+              <div class="toolbar-right">
+                <span class="meeting-members-count" id="meetingMembersCount">Wanachama 24</span>
+              </div>
+            </div>
+            <div class="table-scroll">
+              <table>
+                <thead>
+                  <tr>
+                    <th>MWANACHAMA</th>
+                    <th>MAHUDHURIO</th>
+                    <th>HISA (TSH)</th>
+                    <th>JAMII (TSH)</th>
+                    <th>FAINI YA KIKAO</th>
+                    <th>NJIA</th>
+                    <th>RISITI WHATSAPP</th>
+                  </tr>
+                </thead>
+                <tbody id="meetingTableBody"></tbody>
+              </table>
+            </div>
+          </section>
+
+          <div class="meeting-totals-bar">
+            <div class="meeting-total-item">
+              <span>Waliohudhuria</span>
+              <strong id="meetingTotalPresent">0 / 24</strong>
+            </div>
+            <div class="meeting-total-item">
+              <span>Jumla ya Hisa</span>
+              <strong id="meetingTotalHisa">TSh 0</strong>
+            </div>
+            <div class="meeting-total-item">
+              <span>Mfuko wa Jamii</span>
+              <strong id="meetingTotalWelfare">TSh 0</strong>
+            </div>
+            <div class="meeting-total-item">
+              <span>Faini Zilizolipwa</span>
+              <strong id="meetingTotalFines">TSh 0</strong>
+            </div>
+            <div class="meeting-total-item">
+              <span>JUMLA KUU YA LEO</span>
+              <strong id="meetingTotalCollected">TSh 0</strong>
+            </div>
+            <div>
+              <button class="button button-primary" id="btnSaveMeeting" type="button">💾 Hifadhi Kikao &amp; Miamala</button>
+            </div>
+          </div>
+          <footer class="page-footer"><span>Kikao kinaruhusu mtu mmoja kurekodi data zote kwa sekunde chache.</span><span>Miamala yote inahifadhiwa kwenye SQLite.</span></footer>
+        </section>
+
+        <!-- WELFARE FUND / MFUKO WA JAMII -->
+        <section class="view" id="view-welfare" aria-labelledby="welfareTitle">
+          <div class="page-intro compact-intro">
+            <div>
+              <p class="eyebrow">MFUKO WA JAMII &amp; DHARURA</p>
+              <h1 id="welfareTitle">Mfuko wa Jamii</h1>
+              <p class="page-subtitle">Usimamizi wa michango na misaada ya kijamii (matibabu, misiba na uzazi) kando na hisa za kikundi.</p>
+            </div>
+            <div class="intro-actions">
+              <button class="button button-primary" data-action="disburse-welfare" type="button"><span class="plus">+</span>Toa Msaada wa Jamii</button>
+            </div>
+          </div>
+
+          <div class="stats-grid">
+            <article class="stat-card">
+              <div class="stat-top"><span>Salio la Mfuko wa Jamii</span><span class="stat-icon icon-welfare">🏥</span></div>
+              <strong class="stat-value" id="welfareBalance">TSh 1,250,000</strong>
+              <div class="stat-foot"><span>Inapatikana kutoa misaada</span></div>
+            </article>
+            <article class="stat-card">
+              <div class="stat-top"><span>Jumla ya Michango ya Jamii</span><span class="stat-icon icon-cash">↗</span></div>
+              <strong class="stat-value" id="welfareTotalCollected">TSh 1,450,000</strong>
+              <div class="stat-foot"><span>Michango iliyokusanywa</span></div>
+            </article>
+            <article class="stat-card">
+              <div class="stat-top"><span>Misaada Iliyotolewa</span><span class="stat-icon icon-grant">♡</span></div>
+              <strong class="stat-value" id="welfareTotalDisbursed">TSh 200,000</strong>
+              <div class="stat-foot"><span id="welfareGrantCount">1 msaada uliotolewa</span></div>
+            </article>
+            <article class="stat-card">
+              <div class="stat-top"><span>Kiwango cha Mwanachama</span><span class="stat-icon icon-capital">◉</span></div>
+              <strong class="stat-value" id="welfarePerMember">TSh 5,000</strong>
+              <div class="stat-foot"><span>Mchango kwa mwezi</span></div>
+            </article>
+          </div>
+
+          <section class="card">
+            <div class="card-heading">
+              <div>
+                <p class="eyebrow">HISTORIA YA MISAADA YA JAMII</p>
+                <h3>Misaada Iliyoidhinishwa na Kutolewa</h3>
+              </div>
+            </div>
+            <div class="table-scroll">
+              <table>
+                <thead>
+                  <tr>
+                    <th>MWANACHAMA</th>
+                    <th>SABABU YA MSAADA</th>
+                    <th>TAREHE</th>
+                    <th>ALIYEIDHINISHA</th>
+                    <th class="align-right">KIASI</th>
+                  </tr>
+                </thead>
+                <tbody id="welfareTableBody"></tbody>
+              </table>
+            </div>
+          </section>
+          <footer class="page-footer"><span>Mfuko wa jamii haugawanywi kama hisa bali hutumika kwa misaada ya wanachama.</span></footer>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- MOBILE BOTTOM NAVIGATION -->
+  <nav class="mobile-bottom-nav" id="mobileBottomNav" aria-label="Mobile Navigation">
+    <button class="mobile-nav-btn active" data-view="dashboard" type="button"><span class="icon">⌂</span><span>Overview</span></button>
+    <button class="mobile-nav-btn" data-view="meeting" type="button"><span class="icon">⚡</span><span>Kikao</span></button>
+    <button class="mobile-nav-btn" data-view="members" type="button"><span class="icon">👥</span><span>Wanachama</span></button>
+    <button class="mobile-nav-btn" data-view="contributions" type="button"><span class="icon">↗</span><span>Michango</span></button>
+    <button class="mobile-nav-btn" data-view="loans" type="button"><span class="icon">⇄</span><span>Mikopo</span></button>
+  </nav>
+
+  <dialog class="app-modal" id="appModal" aria-labelledby="modalTitle">
+    <div class="modal-head"><div><p class="eyebrow" id="modalEyebrow">GROUP RECORD</p><h2 id="modalTitle">Record payment</h2></div><button class="icon-button modal-close" id="modalClose" type="button" aria-label="Close dialog">×</button></div>
+    <div class="modal-content" id="modalContent"></div>
+  </dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <input class="visually-hidden" id="backupFilePicker" type="file" accept="application/json,.json" tabindex="-1" aria-label="Chagua nakala ya ChamaBook">
+  <script src="i18n.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

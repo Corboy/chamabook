@@ -1,0 +1,25 @@
+# UX and data-protection research notes
+
+Primary-source guidance for the ChamaBook prototype (reviewed 2026-09-27).
+
+## Loading states and progress
+
+- Use skeletons only as a visual placeholder for the actual layout while data is being fetched or prepared; they should not look like controls or imply fake progress. Keep a short, clear text status such as “Inapakia…” / “Loading…” for assistive technology and users who benefit from explicit feedback. WAI guidance describes status messages as conveying waiting, progress, completion, and errors, and says they should be programmatically exposed without moving focus. [W3C: Understanding WCAG 4.1.3](https://www.w3.org/WAI/WCAG21/Understanding/status-messages)
+- Mark the region being refreshed `aria-busy="true"` while replacing its contents, then set it to `false` when complete. WAI-ARIA says assistive technology may defer changes during this interval and process them as one update afterward. [WAI-ARIA 1.2: aria-busy](https://www.w3.org/TR/wai-aria/#aria-busy)
+- For genuine measurable tasks (e.g., importing a file), use a labelled progress bar and a separate polite live status text. A progressbar’s changing value alone is not announced as a live region. Do not announce every tiny update; use meaningful milestones. [W3C WAI technique ARIA25](https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA25)
+- Respect reduced-motion preferences and avoid flashing/pulsing skeleton effects; this is an implementation recommendation to keep motion optional and calm, not a specific claim that WAI mandates one skeleton design.
+
+## Protecting group financial records
+
+- Treat browser `localStorage` as a prototype/offline convenience only. OWASP advises against putting sensitive information there: any JavaScript running on the same origin can read or alter it, a single XSS issue can expose all stored values, and local machine users can access browser-profile data. Do not store passwords, authentication/session tokens, or assume localStorage is an access-control boundary. [OWASP HTML5 Security Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/HTML5_Security_Cheat_Sheet.html)
+- Browser storage is not a reliable sole copy of a chama ledger. Browser data is best-effort by default and can be deleted by the user or evicted under storage pressure; private browsing data is usually cleared when the private session ends. A persistent-storage request can reduce eviction, but cannot prevent user deletion or replace backups. [MDN: Storage quotas and eviction criteria](https://developer.mozilla.org/en-US/docs/Web/API/Storage_API/Storage_quotas_and_eviction_criteria) [MDN: Web Storage API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API)
+- For a sellable, multi-user financial record system, make an authenticated server database the canonical shared record, with authorization enforced server-side and encrypted transport/storage. Keep the browser copy limited to non-sensitive preferences or temporary cache. This is a product/security recommendation inferred from OWASP’s warning that browser storage provides neither confidentiality nor authorization.
+- If offline operation is a requirement, use IndexedDB for structured records and larger data, but do not mistake it for encryption or authorization: OWASP notes that local users and same-origin XSS can read/modify it too. Provide a clear, user-triggered export/backup and restore flow, show when the last backup was made, validate imports, and make export files explicitly sensitive. IndexedDB is transactional and designed for larger structured client-side data; it improves fit and performance, not secrecy. [MDN: IndexedDB API](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API) [OWASP HTML5 Security Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/HTML5_Security_Cheat_Sheet.html)
+- Handle write failures: localStorage is synchronous, string-only and small (MDN documents a 5 MiB localStorage limit per origin); operations can block the UI and writes can throw `QuotaExceededError`. Wrap saves in `try/catch`, show a clear failure state, and never display “saved” until persistence succeeds. [MDN: Web Storage API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API) [MDN: Storage quotas](https://developer.mozilla.org/en-US/docs/Web/API/Storage_API/Storage_quotas_and_eviction_criteria)
+
+## Practical priorities for the app
+
+1. Add skeleton placeholders only around genuinely asynchronous loading; pair each with a screen-reader-readable “Inapakia…” status, `aria-busy`, and a clear completion/error state.
+2. Keep the welcome loader brief and branded; avoid delaying access to the dashboard with decorative animation.
+3. For the current local-only demo, label records as saved on this device/browser and add visible export/backup plus restore. Warn before destructive clearing and confirm successful file creation/import.
+4. Before selling for real chama money records, move canonical data behind accounts and a secure backend; add role-based access, audit history, backups/recovery, and tested restore. Do not claim localStorage data is secure or backed up.
